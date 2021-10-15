@@ -1,0 +1,195 @@
+//Create a Node which contain a data and next
+class Node{
+    int data;
+    Node next;
+    
+}
+//Create Main class
+
+public class MyClass {
+    Node head;                  // Create a node name head;
+    //Insert an Element
+    void insert(int data){
+        Node n= new Node(); // call the class 
+        n.data=data;        // Assign the data value
+        n.next=null;        // Assign Next value
+        //Node h=head;      
+        if(head==null)        // Check if head== null then we point our node to head;
+        {
+            head=n;    
+        }
+        else{
+            Node h=head;        // create a pointer(object)
+            while(h.next!=null)   
+            {
+                h=h.next;
+            }
+            h.next=n;
+            
+        }
+    }
+    
+    // Insert Element at the Beg
+    
+    void insertAtfront(int data){
+        Node n= new Node();
+        n.data=data;
+        if(head==null)
+        {
+            head=n;
+        }
+        else{
+            Node h= head;
+            n.next=head;
+            head=n;
+        }
+    }
+    
+    // Insert Element at last where  node.next==null;
+    
+    void insertAtlast(int data){
+            Node n= new Node();
+            n.data=data;
+            n.next=null;
+            if(head==null)
+            {
+                head=n;
+            }
+            else{
+                Node h=head;
+                while(h.next!=null)
+                {
+                    h=h.next;
+                }
+                h.next=n;
+            }
+    }
+    
+    // Insert a Node before the Given Node
+    
+    void insertBeforeGivenElement(int data,int value)
+    {
+        Node n=new Node();
+        n.data=data;
+        n.next=null;
+        if(head==null)
+        {
+            System.out.println(value+" is not present in linkList");
+            
+        }
+        else{
+            Node h=head;
+            Node pre=null;
+            while(h.data!=value)
+            {
+                pre=h;
+                h=h.next;
+                if(h.next==null)
+                {
+                    System.out.println(value+" is not present in linkList");
+ 
+                }
+            }
+            pre.next=n;
+            n.next=h;
+        }
+    }
+    
+    // Insert Node after a Given Node;
+
+  void insertAfterGivenElement(int data,int value){
+         Node n=new Node();
+         n.data=data;
+         if(head==null)
+         {
+            System.out.println(value+" is not present in linkList");
+
+         }
+         else{
+             Node h=head;
+             while(h.data!=value){
+                 h=h.next;
+             }
+             n.next=h.next;
+             h.next=n;
+         }
+     }
+    // delete the Beg Node
+    
+    void deletionAtfront(){
+            if(head==null)
+            {
+                System.out.println("LinkList is already delete");
+            }
+            else{
+                head=head.next;
+                
+            }
+    }
+    // Delete the last Node
+    
+    void deletionAtEnd(){
+        if(head==null)
+        {
+            System.out.println("LinkList is already delete");
+        }
+        else{
+            Node h=head;
+            Node pre=null;
+            while(h.next!=null)
+            {
+                pre=h;
+                h=h.next;
+            }
+            pre.next=null;
+        }
+    }
+    
+    // Delete a perticular Node
+    
+    void deletePerticularNode(int data){
+        if(head==null)
+        {
+            System.out.println("LinkList is already delete");
+        }
+        else{
+            Node h=head;
+            Node pre=null;
+            while(h.data!=data)
+            {
+                pre=h;
+                h=h.next;
+            }
+            pre.next=h.next;
+            h=null;
+        }
+    }
+    
+    // print the Node;
+    void print(){
+        Node h=head;
+        while(h.next!=null)
+        {
+            System.out.println(h.data);
+            h=h.next;
+        }
+        System.out.println(h.data);
+    }
+    public static void main(String args[]) {
+        MyClass ll= new MyClass(); // create object of an clas
+        ll.insert(1);               // insert an Node 
+        ll.insert(2);
+        ll.insert(3);
+        ll.insert(4);
+        ll.insert(5);
+        ll.insertAtfront(6);        
+        ll.insertAtlast(7);
+        ll.insertBeforeGivenElement(8,4);
+        ll.insertAfterGivenElement(10,6);
+        ll.deletionAtfront();
+        ll.deletionAtEnd();
+        ll.deletePerticularNode(2);
+        ll.print();
+        
+    }
+}
